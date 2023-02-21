@@ -16,6 +16,11 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
+    @GetMapping
+    public String getCustomer() {
+        return "Customer";
+    }
+    /*
     @GetMapping(value = "/{id}")
     public List<Order> listCustomerOrdersById(@PathVariable("id") Integer id) {
         return customerService.listCustomerOrdersById(id);
@@ -25,6 +30,7 @@ public class CustomerController {
     public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
         return customerService.registerCustomer(customerRegistrationRequest);
     }
+     */
 }
 
 // ResponseEntity<?>

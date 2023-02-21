@@ -12,7 +12,7 @@ public class BookController {
     public BookController(BookService bookService) {
         this.bookService = bookService;
     }
-
+    /*
     @PostMapping
     public void addNewBook(@RequestBody BookAddingRequest bookAddingRequest) {
         return bookService.addNewBook(bookAddingRequest);
@@ -22,6 +22,7 @@ public class BookController {
     public void updateBookStock(@PathVariable("id") Integer id) {
         return bookService.updateBookStock(id);
     }
+     */
 }
 
 // ResponseEntity<?>
