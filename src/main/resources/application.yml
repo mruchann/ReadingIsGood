@@ -1,0 +1,11 @@
+spring:
+    jpa:
+        database: POSTGRESQL
+        generate-ddl: false
+        hibernate:
+            ddl-auto: create-drop
+    datasource:
+        url: jdbc:postgresql://localhost:5432/ReadingIsGood
+        username: postgres
+        password: password
+        driverClassName: org.postgresql.Driver
