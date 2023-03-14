@@ -1,28 +1,32 @@
 package com.getir.ReadingIsGood.controller;
 
+import com.getir.ReadingIsGood.request.BookRequest;
+import com.getir.ReadingIsGood.response.BookResponse;
 import com.getir.ReadingIsGood.service.BookService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import java.math.BigDecimal;
+
 
 @RestController
-@RequestMapping(path = "api/v1/books")
+@RequestMapping("api/v1/book")
+@RequiredArgsConstructor
 public class BookController {
-
     private final BookService bookService;
-    @Autowired
-    public BookController(BookService bookService) {
-        this.bookService = bookService;
-    }
-    @PostMapping
-    public void addNewBook(@RequestBody BookAddingRequest bookAddingRequest) {
-        return bookService.addBook(bookAddingRequest);
+
+    @PostMapping("/add")
+    public ResponseEntity<BookResponse> addNewBook(@RequestBody BookRequest request) {
+        return ResponseEntity.ok(bookService.addNewBook(request));
     }
 
-    @PutMapping(value = "/{id}")
-    public void updateBookStock(@PathVariable("id") Integer id) {
+    @PutMapping("stock-update/{bookId}")
+    public ResponseEntity<BookResponse> updateBookStock(@PathVariable Long bookId, @RequestParam Integer stock) {
+        return ResponseEntity.ok(bookService.updateBookStock(bookId, stock));
+    }
 
-        return bookService.updateBookStock(id);
+    @PutMapping("price-update/{bookId}")
+    public ResponseEntity<BookResponse> updatePrice(@PathVariable Long bookId, @RequestParam BigDecimal price) {
+        return ResponseEntity.ok(bookService.updatePrice(bookId, price));
     }
 }
-
-// ResponseEntity<?>

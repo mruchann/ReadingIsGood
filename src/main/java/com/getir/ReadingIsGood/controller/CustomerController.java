@@ -1,38 +1,31 @@
 package com.getir.ReadingIsGood.controller;
 
-import com.getir.ReadingIsGood.model.Order;
+import com.getir.ReadingIsGood.entity.Order;
+import com.getir.ReadingIsGood.request.CustomerRequest;
+import com.getir.ReadingIsGood.response.CustomerResponse;
 import com.getir.ReadingIsGood.service.CustomerService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping(path = "api/v1/customers")
+@RequestMapping("api/v1/customer")
+@RequiredArgsConstructor
 public class CustomerController {
-
     private final CustomerService customerService;
 
-    public CustomerController(CustomerService customerService) {
-        this.customerService = customerService;
+    @GetMapping("/{customerId}/orders")
+    public Page<Order> getAllOrdersByCustomerId(
+            @PathVariable("customerId") Long customerId,
+            @RequestParam("page") int page,
+            @RequestParam("size") int size
+    ) {
+        return customerService.getAllOrdersByCustomerId(customerId, page, size);
     }
 
-    @GetMapping
-    public String getCustomer() {
-        return "Customer";
+    @PostMapping("/register")
+    public ResponseEntity<CustomerResponse> registerCustomer(@RequestBody CustomerRequest request) {
+        return ResponseEntity.ok(customerService.registerCustomer(request));
     }
-    /*
-    @GetMapping(value = "/{id}")
-    public List<Order> listCustomerOrdersById(@PathVariable("id") Integer id) {
-        return customerService.listCustomerOrdersById(id);
-    }
-
-    @PostMapping
-    public void registerCustomer(@RequestBody CustomerRegistrationRequest customerRegistrationRequest) {
-        return customerService.registerCustomer(customerRegistrationRequest);
-    }
-     */
 }
-
-// ResponseEntity<?>
-
-// DAO - DTO
