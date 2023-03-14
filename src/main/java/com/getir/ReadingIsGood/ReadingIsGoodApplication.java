@@ -10,3 +10,4 @@ public class ReadingIsGoodApplication {
 		SpringApplication.run(ReadingIsGoodApplication.class, args);
 	}
 }
+
