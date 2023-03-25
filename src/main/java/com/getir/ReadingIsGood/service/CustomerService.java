@@ -18,9 +18,11 @@ import org.springframework.data.domain.Pageable;
 @Service
 @RequiredArgsConstructor
 public class CustomerService {
+
+    private final CustomerMapper customerMapper;
     private final CustomerRepository customerRepository;
     private final OrderRepository orderRepository;
-    private final CustomerMapper customerMapper;
+
 
     public Page<Order> getAllOrdersByCustomerId(Long customerId, int page, int size) {
         Pageable pageable = PageRequest.of(page, size);

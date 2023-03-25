@@ -18,10 +18,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class OrderService {
-    private final OrderRepository orderRepository;
-    private final BookRepository bookRepository;
 
     private final OrderMapper orderMapper;
+    private final OrderRepository orderRepository;
+    private final BookRepository bookRepository;
 
     // todo: validation
     public OrderResponse addNewOrder(@NotNull OrderRequest request) {

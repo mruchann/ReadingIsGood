@@ -15,8 +15,10 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class BookService {
 
-    private final BookRepository bookRepository;
     private final BookMapper bookMapper;
+
+    private final BookRepository bookRepository;
+
 
     // todo: validation
     public BookResponse addNewBook(@NotNull BookRequest request) {
@@ -26,6 +28,7 @@ public class BookService {
             .price(request.getPrice())
             .stock(request.getStock())
             .build();
+
         return bookMapper.toBookResponse(bookRepository.save(book));
     }
 

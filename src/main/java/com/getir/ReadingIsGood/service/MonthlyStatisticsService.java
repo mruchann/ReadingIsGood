@@ -11,6 +11,8 @@ import java.time.LocalDate;
 import java.time.YearMonth;
 import java.util.*;
 
+import static java.util.Map.entry;
+
 @Service
 @RequiredArgsConstructor
 public class MonthlyStatisticsService {
@@ -29,19 +31,22 @@ public class MonthlyStatisticsService {
 
         // to eliminate unnecessary string manipulation, we should use a map
 
-        Map<Integer, String> monthsMap = new HashMap<>();
-        monthsMap.put(1, "January");
-        monthsMap.put(2, "February");
-        monthsMap.put(3, "March");
-        monthsMap.put(4, "April");
-        monthsMap.put(5, "May");
-        monthsMap.put(6, "June");
-        monthsMap.put(7, "July");
-        monthsMap.put(8, "August");
-        monthsMap.put(9, "September");
-        monthsMap.put(10, "October");
-        monthsMap.put(11, "November");
-        monthsMap.put(12, "December");
+        // Map.of() only works up to 10 entries, so we need to use Map.ofEntries()
+
+        Map<Integer, String> monthsMap = Map.ofEntries(
+                entry(1, "January"),
+                entry(2, "February"),
+                entry(3, "March"),
+                entry(4, "April"),
+                entry(5, "May"),
+                entry(6, "June"),
+                entry(7, "July"),
+                entry(8, "August"),
+                entry(9, "September"),
+                entry(10, "October"),
+                entry(11, "November"),
+                entry(12, "December")
+        );
 
         int year = LocalDate.now().getYear();
         for (int month = 1; month <= 12; month++) {
