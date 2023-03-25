@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 
 @RestController
-@RequestMapping("api/v1/book")
+@RequestMapping("api/v1/books")
 @RequiredArgsConstructor
 public class BookController {
     private final BookService bookService;

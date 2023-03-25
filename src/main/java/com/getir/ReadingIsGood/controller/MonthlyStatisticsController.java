@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/statistic")
+@RequestMapping("api/v1/statistics")
 @RequiredArgsConstructor
 public class MonthlyStatisticsController {
     private final MonthlyStatisticsService monthlyStatisticsService;
