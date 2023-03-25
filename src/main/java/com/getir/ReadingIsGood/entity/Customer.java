@@ -10,17 +10,17 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 @Builder
+@Table(name = "customers")
 public class Customer {
+
     @Id
-//    @Getter(AccessLevel.NONE)
-//    @Setter(AccessLevel.NONE)
     @SequenceGenerator(name = "customer_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "customer_sequence")
-    @Column(updatable = false, nullable = false)
+    @Column(updatable = false)
     private Long id;
 
     @Column
-    @OneToMany
+    @OneToMany(mappedBy = "customer")
     private List<Order> orders;
 
     @Column
