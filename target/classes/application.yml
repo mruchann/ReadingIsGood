@@ -1,11 +1,13 @@
 spring:
+    main:
+        allow-bean-definition-overriding: true
     jpa:
         database: POSTGRESQL
         generate-ddl: false
         hibernate:
             ddl-auto: create-drop
     datasource:
-        url: jdbc:postgresql://localhost:5432/ReadingIsGood
+        url: jdbc:postgresql://localhost:5454/postgres
         username: postgres
-        password: password
+        password: postgres
         driverClassName: org.postgresql.Driver
